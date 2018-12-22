@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body style="background: black;">
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/utils.js"></script>
+		<script type="text/javascript">
+			mui.plusReady(function() {
+				plus.screen.lockOrientation("landscape-primary"); //锁定横屏 默认不会还原
+				plus.navigator.setFullscreen(true);
+			});
+			mui.init({
+				beforeback: function() { //退出前当前面恢复横屏 
+					mui.plusReady(function() {
+						plus.screen.lockOrientation("portrait-primary");
+					});
+					//返回true，继续页面关闭逻辑
+					return true;
+				}
+			});
+			var websiteUrl = getLocalStorage("websiteUrl");
+			mui.init({
+				subpages: [{
+					url: websiteUrl,
+					id: "websiteUrl",
+					styles: {
+						top: 40,
+						bottom: 20
+					},
+					show: {
+						autoShow: true,
+						duration:1000,
+						aniShow:'fade-in'
+					},
+					waiting: {
+						utoShow: true
+					}
+				}]
+			})
+		</script>
+		<header class="mui-bar mui-bar-nav" style="background: rgba(255, 255, 255, 0)">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white"></a>
+		</header>
+		<div class="mui-content" id="videoField" style="background:black;height: 100%;">
+			<div style="color: white;height: 100%;">
+				视频加载中，请等待...
+			</div>
+		</div>
+	</body>
+
+</html>

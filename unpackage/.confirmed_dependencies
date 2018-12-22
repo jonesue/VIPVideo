@@ -1,0 +1,12 @@
+{
+  "index.html": {
+    "refer": [
+      "website.html"
+    ]
+  },
+  "website.html": {
+    "refer": [
+      "player.html"
+    ]
+  }
+}
